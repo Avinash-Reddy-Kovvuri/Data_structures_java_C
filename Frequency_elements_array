@@ -1,0 +1,22 @@
+//frequency of elements in array 
+public class Main 
+{ 
+ public static void main(String[] args) { 
+ int a[] = {2,1,2,4,5}; 
+    int c=1,c1=0; 
+    for(int i=0;i<5;i++){ 
+        if(a[i]== 10000) 
+        continue; 
+        c = 1; 
+        for(int j=i+1;j<5;j++){ 
+            if (a[i]==a[j]){ 
+                c+=1; 
+                a[j]=10000; 
+            } 
+        } 
+        
+    System.out.print(a[i]); 
+    System.out.print(":"+c+"\n");} 
+     
+ } 
+}
