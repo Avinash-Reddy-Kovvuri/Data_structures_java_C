@@ -1,0 +1,31 @@
+// Square_root_binary search. 
+class Main{ 
+    public static void main(String[] args){ 
+        int k=49; 
+        int [] a = new int[k]; 
+        for(int i=1;i<=k;i++){ 
+            a[i-1]=i; 
+        } 
+        int lb=0,ub=k,b=10000; 
+        while (true){ 
+            int mid=(int)((ub+lb)/2); 
+             
+            if(b==mid){ 
+                System.out.println("Not found"); 
+                break; 
+            } 
+            else if(k==a[mid]*a[mid]){ 
+                System.out.println(a[mid]); 
+                break; 
+            } 
+            else if(k>a[mid]*a[mid]){ 
+                lb=mid; 
+            } 
+            else if(k<a[mid]*a[mid]){ 
+                ub=mid; 
+            } 
+             
+            b=mid; 
+        } 
+    } 
+}
