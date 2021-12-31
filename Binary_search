@@ -1,12 +1,15 @@
 //Binary Search
-class Main{
+public class Main{
     public static void main(String[] args){
         int a[] = {1,2,4,5,6};
-        int lb=0,ub=4,k=7,b=10000;
+        int lb=0,ub=4,k=6,b=10000;
         while (true){
             int mid=(int)((ub+lb)/2);
             
             if(b==mid){
+                if(k==a[b+1])
+                System.out.println("Found");
+                else
                 System.out.println("Not found");
                 break;
             }
