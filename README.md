@@ -1,1 +1,1 @@
-# Data_structures_ using _ java & C
+To achieve the concepts of data structures using java & c
