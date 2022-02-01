@@ -1,0 +1,68 @@
+//insertion_Linked list __ c lang.
+#include <stdio.h>
+#include <malloc.h>
+struct node{
+    int data;
+    struct node *next;
+};
+void print(struct node *head){
+    printf("\nDisplaying elements using LINKED LIST");
+        while(head!=NULL){
+        printf("\n%d",head->data);
+        head = head->next;
+    }
+}
+void insert(struct node **head,int data,int position){
+    int k=1;
+    struct node *p,*new;
+    struct node *current = *head;
+    new = (struct node *)malloc(sizeof(struct node));
+    new->data = data;
+    if(position==1){
+        new->next = current;
+        *head = new;
+    }
+    else{
+        while(current != NULL && k<position){
+            p = current;
+            current = current->next;
+            k++;
+        }
+        if(position>k){
+            printf("\nInserting end");
+        }
+        p->next=new;
+        new->next=current;
+        
+    }
+}
+int main()
+{
+    struct node *head=NULL,*tail=NULL,*new=NULL;
+    printf("Enter no of elements : ");
+    int n;
+    scanf("%d",&n);
+    for(int i=0;i<n;i++){
+        int no;
+        printf("Enter element : ");
+        scanf("%d",&no);
+        new = (struct node *)malloc(sizeof(struct node));
+        new->data = no;
+        new->next = NULL;
+        if(head==NULL){
+            head = new;
+            tail = new;
+            }
+        else{
+            tail->next = new;
+            tail = new;
+        }
+    }
+    print(head);
+    printf("\nEnter position number and data to insert : ");
+    int position,dat;
+    scanf("%d %d",&position,&dat);
+    insert(&head,dat,position);
+    print(head);
+    return 0;
+}
