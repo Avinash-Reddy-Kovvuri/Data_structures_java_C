@@ -59,7 +59,7 @@ int main()
         }
     }
     print(head);
-    printf("\nEnter position number and data to insert : ");
+    printf("\nEnter position number(1 to %d) and data to insert : ",n);
     int position,dat;
     scanf("%d %d",&position,&dat);
     insert(&head,dat,position);
