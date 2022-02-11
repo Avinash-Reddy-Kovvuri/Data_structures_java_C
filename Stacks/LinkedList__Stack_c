@@ -1,0 +1,43 @@
+#include<stdlib.h>
+#include <stdio.h>
+struct Node{
+    int data;
+    struct Node *next;
+};
+struct Node *create(){return NULL;}
+void push(struct Node **top,int data){
+    struct Node *temp;
+    temp = malloc(sizeof(struct Node));
+    temp->data = data;
+    temp->next = *top;
+    *top = temp;
+}
+int TestEmpty(struct Node *top){return top==NULL;}
+int pop(struct Node **top){
+    if(TestEmpty(*top)) return -1;
+    
+    struct Node *temp = *top;
+    *top = (*top)->next;
+    int data=temp->data;
+    free(temp);
+    return data;
+}
+int topele(struct Node *top){
+    if(top==NULL){return -1;}
+    return top->data;
+}
+int main()
+{
+    struct Node *s = create();
+    push(&s,2);
+    push(&s,5);
+    push(&s,4);
+    push(&s,8);
+    pop(&s);
+    printf("Top element - %d\n",topele(s));
+    while(s->next != NULL){
+        printf("%d\n",s->data);
+        s=s->next;} printf("%d",s->data);
+
+    return 0;
+}
