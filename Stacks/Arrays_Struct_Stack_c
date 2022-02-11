@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <malloc.h>
+#include <stdlib.h>
 struct Stack{
     int top;
     int capacity;
@@ -21,6 +21,10 @@ void push(struct Stack *s, int data){
     else{
     s->array[++(s->top)]=data;}
 }
+void Resize(struct Stack *s){
+    s->capacity *= 2;
+    s->array = realloc(s->array,s->capacity*sizeof(int));
+}
 int pop(struct Stack *s){
     if(EmptyStack(s)){printf("Stack is empty/underflow");}
     else{
@@ -33,9 +37,11 @@ int main()
     push(s,3);
     push(s,4);
     push(s,8);
-    pop(s);
     push(s,10);
+    push(s,10);
+    Resize(s);
+    push(s,12);
     for(int i=s->top;i>=0;i--){
-    printf("%d\n",s->array[i]);}
+    printf("\n%d",s->array[i]);}
     return 0;
 }
