@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node{
+    int front,rear;
+    int capacity;
+    int *array;
+};
+struct Node *create(int cap){
+    struct Node *s = malloc(sizeof(struct Node));
+    s->capacity = cap;
+    s->front = s->rear = -1;
+    s->array = malloc(s->capacity * sizeof(int));
+    return s;
+}
+int Isempty(struct Node *s){
+    return(s->front==-1);
+}
+int Isfull(struct Node *s){
+    return((s->rear+1)%s->capacity == s->front);
+}
+void enque(struct Node *s,int data){
+    if(Isfull(s)){printf("\nQueue is full.");return;}
+
+    s->rear = (s->rear+1)%s->capacity;
+    s->array[s->rear] = data;
+    if(s->front==-1){s->front = s->rear;}
+    
+}
+void dque(struct Node *s){
+    if(Isempty(s)){printf("\nQueue is empty.");return;}
+    if(s->front == s->rear){s->front=s->rear=-1;}
+    else{s->front = (s->front+1)%s->capacity;}
+    
+}
+
+int main()
+{
+    struct Node *s;
+    s=create(3);
+    dque(s);
+    enque(s,5);
+    enque(s,6);
+    enque(s,2);
+    enque(s,44);
+    dque(s);
+    for(int i=s->front;i<s->rear+1;i++){printf("\n%d",s->array[i]);}
+
+    return 0;
+}
