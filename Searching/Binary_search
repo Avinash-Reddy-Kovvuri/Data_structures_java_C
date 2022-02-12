@@ -1,0 +1,30 @@
+//Binary Search
+public class Main{
+    public static void main(String[] args){
+        int a[] = {1,2,4,5,6};
+        int lb=0,ub=4,k=6,b=10000;
+        while (true){
+            int mid=(int)((ub+lb)/2);
+            
+            if(b==mid){
+                if(k==a[b+1])
+                System.out.println("Found");
+                else
+                System.out.println("Not found");
+                break;
+            }
+            else if(k==a[mid]){
+                System.out.println("Found");
+                break;
+            }
+            else if(k>a[mid]){
+                lb=mid;
+            }
+            else if(k<a[mid]){
+                ub=mid;
+            }
+            
+            b=mid;
+        }
+    }
+}
