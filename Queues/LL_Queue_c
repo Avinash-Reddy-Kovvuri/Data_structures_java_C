@@ -1,0 +1,48 @@
+
+#include <stdio.h>
+#include<stdlib.h>
+struct Node{
+    int data;
+    struct Node *next;
+};
+struct Queue{
+    struct Node *front;
+    struct Node *rear;
+};
+struct Queue *create(){
+    struct Queue *s=malloc(sizeof(struct Queue));
+    s->front=NULL;
+    s->rear = NULL;
+    return s;
+}
+void enque(struct Queue *s,int data){
+    struct Node *new=malloc(sizeof(struct Node));
+    new->data=data;
+    new->next=NULL;
+    if(s->rear!=NULL){s->rear->next = new;}
+    s->rear = new;
+    if(s->front == NULL){s->front=s->rear;}
+}
+int Isempty(struct Queue *s){return s->front==NULL;}
+void deque(struct Queue *s){
+    if(Isempty(s)){printf("\nQueue is empty.");return;}
+    struct Node *temp=malloc(sizeof(struct Node));
+    temp=s->front;
+    s->front = s->front->next;
+    free(temp);
+}
+int main()
+{
+    struct Queue *s=create();
+    deque(s);
+    enque(s,5);
+    enque(s,4);
+    enque(s,7);
+    deque(s);
+    while(s->front!=NULL){
+        printf("\n%d",s->front->data);
+        s->front=s->front->next;
+    }
+    
+    return 0;
+}
