@@ -1,0 +1,18 @@
+#include <stdio.h>
+void rot(int arr[],int size){
+    int d=arr[0];
+    for(int i=0;i<size;i++){arr[i]=arr[i+1];}
+    arr[size-1]=d;
+}
+int main()
+{
+    
+    int arr[8]={1,2,3,4,5,6,7,8};
+    int v;
+    scanf("%d",&v);
+    for(int i=0;i<v;i++){rot(arr,8);}
+    for(int h=0;h<8;h++){
+        printf("%d ",arr[h]);
+    }
+    return 0;
+}
